@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { FormControl, FormLabel, Input, Button, Box, Divider, Textarea } from "@chakra-ui/react";
 import { createBlog } from "../near-blog-api";
 import { Layout } from "../components/Layout";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 const AddBlog = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     title: "",
     content: "",
-    appreciationCost: '1',
+    appreciationCost: "1",
   });
 
   const onChange = (e) => {
@@ -20,7 +20,7 @@ const AddBlog = () => {
   };
 
   const onSubmit = async () => {
-    await navigate("/")
+    await navigate("/");
     createBlog(values);
   };
 

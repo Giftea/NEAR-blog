@@ -3,9 +3,11 @@ import { useParams } from "react-router-dom";
 import { Divider, Box, Button } from "@chakra-ui/react";
 import { getBlog, appreciateBlog } from "../near-blog-api";
 import { Layout } from "../components/Layout";
-import { utils } from 'near-api-js';
+import { utils } from "near-api-js";
+import { useNavigate } from "react-router-dom";
 
 const Blog = () => {
+  const navigate = useNavigate();
   let { id } = useParams();
   const [blog, setBlog] = useState({});
   const [loading, setLoading] = useState(false);
@@ -20,6 +22,11 @@ const Blog = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const appreciate = async () => {
+    await navigate("/");
+    appreciateBlog(id, blog?.appreciationCost);
   };
 
   useEffect(() => {
@@ -45,9 +52,7 @@ const Blog = () => {
           <Box color="gray" my="3">
             <p>{blog?.appreciationCount} Appreciations</p>
           </Box>
-          <Button onClick={() => appreciateBlog(id, blog?.appreciationCost)}>
-            Appreciate with {utils.format.formatNearAmount(blog?.appreciationCost)} NEAR
-          </Button>
+          <Button onClick={appreciate}>Appreciate with {utils.format.formatNearAmount(blog?.appreciationCost)} NEAR</Button>
         </Box>
       )}
     </Layout>
