@@ -2,10 +2,11 @@ import "regenerator-runtime/runtime";
 import React from "react";
 import "./assets/global.css";
 import { BrowserRouter } from "react-router-dom";
-import { Routes, Route, Redirect } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import AddBlog from "./pages/AddBlog";
 import Blog from "./pages/Blog";
+import Redirect from "./pages/Redirect";
 
 export default function App() {
   return (
@@ -14,7 +15,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/add/" element={<AddBlog />} />
         <Route path="/blog/:id/" element={<Blog />} />
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<Redirect />} />
       </Routes>
     </BrowserRouter>
   );
