@@ -5,6 +5,7 @@ import { Layout } from "../components/Layout";
 import { useNavigate } from "react-router-dom"
 
 const AddBlog = () => {
+  const navigate = useNavigate()
   const [values, setValues] = useState({
     title: "",
     content: "",
