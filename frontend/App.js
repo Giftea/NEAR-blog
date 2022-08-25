@@ -12,8 +12,8 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/add" element={<AddBlog />} />
-        <Route path="/blog/:id" element={<Blog />} />
+        <Route path="/add/" element={<AddBlog />} />
+        <Route path="/blog/:id/" element={<Blog />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </BrowserRouter>

@@ -41,7 +41,7 @@ const Blog = () => {
             <Divider />
           </Box>
 
-          <article paddingTop="2rem">{blog?.content}</article>
+          <Box paddingTop="2rem">{blog?.content}</Box>
           <Box color="gray" my="3">
             <p>{blog?.appreciationCount} Appreciations</p>
           </Box>
