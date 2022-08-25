@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FormControl, FormLabel, Input, Button, Box, Divider, Textarea } from "@chakra-ui/react";
 import { createBlog } from "../near-blog-api";
 import { Layout } from "../components/Layout";
+import { useNavigate } from "react-router-dom"
 
 const AddBlog = () => {
   const [values, setValues] = useState({
@@ -18,6 +19,7 @@ const AddBlog = () => {
   };
 
   const onSubmit = async () => {
+    await navigate("/")
     createBlog(values);
   };
 
