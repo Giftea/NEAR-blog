@@ -1,12 +1,17 @@
 import { connect, Contract, keyStores, WalletConnection } from 'near-api-js';
-import { getConfig } from './near-config';
+import getConfig from "./near-config";
 
 const nearConfig = getConfig("testnet");
 
 // Initialize contract & set global variables
 export async function initContract() {
   // Initialize connection to the NEAR testnet
-  const near = await connect(Object.assign({ deps: { keyStore: new keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
+  const near = await connect(
+    Object.assign(
+      { keyStore: new keyStores.BrowserLocalStorageKeyStore() },
+      nearConfig
+    )
+  );
 
   // Initializing Wallet based Account. It can work with NEAR testnet wallet that
   // is hosted at https://wallet.testnet.near.org
@@ -27,7 +32,7 @@ export async function initContract() {
 export function signOutNearWallet() {
   window.walletConnection.signOut();
   // reload page
-  window.location.replace(window.location.origin + window.location.pathname);
+  window.location.reload();
 }
 
 export function signInWithNearWallet() {
@@ -35,17 +40,7 @@ export function signInWithNearWallet() {
   // user's behalf.
   // This works by creating a new access key for the user's account and storing
   // the private key in localStorage.
-  window.walletConnection.requestSignIn(nearConfig.contractName);
-}
-
-export async function setGreetingOnContract(message) {
-  let response = await window.contract.set_greeting({
-    args: { message: message }
+  return window.walletConnection.requestSignIn({
+    contractId: env.contractName,
   });
-  return response;
-}
-
-export async function getGreetingFromContract() {
-  let greeting = await window.contract.get_greeting();
-  return greeting;
 }
