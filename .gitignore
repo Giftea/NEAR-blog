@@ -31,3 +31,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 frontendb
+/.cache
+
+.cache
+dist
