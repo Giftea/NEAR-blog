@@ -14,7 +14,16 @@
     "parcel-bundler": "^1.12.5"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "buffer": "^6.0.3",
+    "framer-motion": "^11.0.24",
+    "near-api-js": "^3.0.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3",
+    "regenerator-runtime": "^0.14.1",
+    "uuid": "^9.0.1"
   }
 }
